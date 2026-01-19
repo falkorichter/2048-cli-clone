@@ -8,7 +8,6 @@
 
 #ifdef HAVE_LIBINTL
 #include <libintl.h>
-#include <locale.h>
 #else
 /* Stub macros when gettext is not available */
 #define gettext(Msgid) ((const char *) (Msgid))
@@ -24,6 +23,7 @@
 #define textdomain(Domainname) ((const char *) (Domainname))
 #define bindtextdomain(Domainname, Dirname) ((const char *) (Dirname))
 #define bind_textdomain_codeset(Domainname, Codeset) ((const char *) (Codeset))
+#endif /* HAVE_LIBINTL */
 
 /* Include locale.h for setlocale if available */
 #ifdef HAVE_LOCALE_H
@@ -33,7 +33,5 @@
 #define LC_ALL 0
 #define LC_CTYPE 1
 #endif
-
-#endif /* HAVE_LIBINTL */
 
 #endif /* GETTEXT_H */
