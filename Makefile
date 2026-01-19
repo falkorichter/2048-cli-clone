@@ -4,13 +4,13 @@ CFLAGS         += -DINVERT_COLORS -DVT100 -O2
 LFLAGS         +=
 
 # Detect if libintl.h is available
-HAVE_LIBINTL := $(shell echo '\#include <libintl.h>' | $(CC) -E - >/dev/null 2>&1 && echo yes || echo no)
+HAVE_LIBINTL := $(shell printf '\#include <libintl.h>' | $(CC) -E - >/dev/null 2>&1 && echo yes || echo no)
 ifeq ($(HAVE_LIBINTL),yes)
     CFLAGS += -DHAVE_LIBINTL
 endif
 
 # Detect if locale.h is available
-HAVE_LOCALE := $(shell echo '\#include <locale.h>' | $(CC) -E - >/dev/null 2>&1 && echo yes || echo no)
+HAVE_LOCALE := $(shell printf '\#include <locale.h>' | $(CC) -E - >/dev/null 2>&1 && echo yes || echo no)
 ifeq ($(HAVE_LOCALE),yes)
     CFLAGS += -DHAVE_LOCALE_H
 endif
