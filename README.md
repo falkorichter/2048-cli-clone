@@ -21,6 +21,17 @@ version, and a VT100 compatible terminal is being used. If a VT100 terminal is
 not available, simply alter the makefile and remove the '-DVT100' flag.
 Compiling with ncurses requires the development libraries for it.
 
+#### macOS
+The game compiles and runs on macOS. The internationalization library (gettext)
+is optional - if libintl.h is not available on your system, the build will
+automatically fall back to English-only messages. To enable color support on
+macOS, edit the Makefile and ensure the line contains `-DINVERT_COLORS`:
+
+```
+CFLAGS += -DINVERT_COLORS -DVT100 -O2
+```
+
+#### Linux
 On an ubuntu/debian machine for example, these can be obtained via
 
 ```

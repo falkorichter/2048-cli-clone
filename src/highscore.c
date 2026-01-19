@@ -5,8 +5,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include "engine.h"
-#include <libintl.h>
-#include <locale.h>
+#include "gettext.h"
 
 const char *hs_dir_name  = "2048";
 const char *hs_file_name = "highscore";
@@ -52,25 +51,24 @@ static inline void string_to_lower(char *str)
 void highscore_reset(void)
 {
     const char *hsfile = highscore_retrieve_file();
-    const size_t resp_length = 16;
-    char resp[resp_length];
+    char resp[16];
 
     printf(gettext("Are you sure you want to reset your scores? Y(es) or N(o)\n"));
 
     while (1) {
         /* fgets is used to avoid queuing that may occur with getchar */
-        if (fgets(resp, resp_length, stdin) == NULL)
+        if (fgets(resp, 16, stdin) == NULL)
             return;
 
         string_to_lower(resp);
 
         const size_t sl = strlen(resp);
-        if (sl < resp_length)
+        if (sl < 16)
             resp[sl - 1] = '\0';
 
-        if (!strncmp(resp, gettext("yes"), resp_length) || !strncmp(resp, gettext("y"), resp_length))
+        if (!strncmp(resp, gettext("yes"), 16) || !strncmp(resp, gettext("y"), 16))
             goto reset_scores;
-        else if (!strncmp(resp, "no", resp_length) || !strncmp(resp, "n",  resp_length))
+        else if (!strncmp(resp, "no", 16) || !strncmp(resp, "n",  16))
             return;
 
         printf(gettext("Please enter Yes or No\n"));
