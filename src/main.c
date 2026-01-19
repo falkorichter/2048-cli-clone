@@ -3,8 +3,7 @@
 #include "ai.h"
 #include "engine.h"
 #include "gfx.h"
-#include <libintl.h>
-#include <locale.h>
+#include "gettext.h"
 #include <string.h>
 
 void draw_then_sleep(struct gfx_state *s, struct gamestate *g)

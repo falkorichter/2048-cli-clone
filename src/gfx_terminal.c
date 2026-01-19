@@ -4,8 +4,7 @@
 #include <unistd.h>
 #include "merge.h"
 #include "gfx.h"
-#include <libintl.h>
-#include <locale.h>
+#include "gettext.h"
 
 #define iterate(n, expression)\
     do {\

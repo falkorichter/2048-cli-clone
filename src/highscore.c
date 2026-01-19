@@ -5,8 +5,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include "engine.h"
-#include <libintl.h>
-#include <locale.h>
+#include "gettext.h"
 
 const char *hs_dir_name  = "2048";
 const char *hs_file_name = "highscore";
